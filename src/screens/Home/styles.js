@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const Title = styled.Text`   
         text-align: center;
-        margin-top:40px ;
+        margin-top:50px ;
         color: #fff;
         font-size:24px;
         font-weight:bold ;
@@ -21,10 +21,11 @@ export const InputText = styled.TextInput`
         background-color: #1f1e25;
         font-size: 18px;
         padding: 10px;
-        margin-top: 30px;
+        margin-top: 45px;
         border-radius: 7px;
+        margin-left: 10px;
+        margin-right: 10px;
         color: white;
-        
 `;
 
 export const ResultText = styled.Text`

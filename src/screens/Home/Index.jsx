@@ -12,30 +12,31 @@ export default function Home() {
     const [resultText, setResultText] = useState("")
 
     function handleCalculateImc() {
-       const calculateImc = (weight / (height * height)).toFixed(2)
-        if(height !== 0 && weight !==0){
-            setResultText("Informe altura e peso")
-        }
+        const calculateImc = (weight / (height * height)).toFixed(2)
 
-        if (calculateImc < 18.5){
-            setResultImc(calculateImc)
-            setResultText("Muito abaixo do peso") 
+        if (height === 0 || weight === 0) {
+            setResultText("Informe altura e peso")
+            setResultImc(0)
         }
-        else if (calculateImc > 18.5 && calculateImc < 24.9){
+        if (calculateImc < 18.5) {
             setResultImc(calculateImc)
-            setResultText("Seu peso esta normal")
+            setResultText("Muito abaixo do peso 😕")
         }
-        else if (calculateImc >= 25 && calculateImc <= 29.9){ 
+        else if (calculateImc > 18.5 && calculateImc < 24.9) {
             setResultImc(calculateImc)
-            setResultText("Sobrepeso")
+            setResultText("Seu peso esta normal 👏")
+        }
+        else if (calculateImc >= 25 && calculateImc <= 29.9) {
+            setResultImc(calculateImc)
+            setResultText("Sobrepeso 😬")
         }
         else if (calculateImc >= 30 && calculateImc <= 39.9) {
             setResultImc(calculateImc)
-            setResultText("Obesidade")
+            setResultText("Obesidade 😧")
         }
-        else if (calculateImc > 40){
+        else if (calculateImc > 40) {
             setResultImc(calculateImc)
-            setResultText("Obesidade grave")
+            setResultText("Obesidade grave ☠️")
         }
     }
     return (
@@ -45,18 +46,18 @@ export default function Home() {
             <StatusBar style="auto" />
 
             <InputText
-                placeholder='Digite a altura'
+                placeholder='Altura (ex: 1,60)'
                 placeholderTextColor="#999"
                 keyboardType="numeric"
                 onChangeText={setHeight}
             />
             <InputText
-                placeholder='Digite o peso'
+                placeholder='Peso (ex: 60,9)'
                 placeholderTextColor="#999"
                 keyboardType="numeric"
                 onChangeText={setWeight}
             />
-            <Icon name="users" size={60} color="#900"/>
+
 
             <Button onPress={handleCalculateImc} />
 
